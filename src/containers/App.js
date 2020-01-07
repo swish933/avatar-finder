@@ -6,11 +6,14 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import "../index.css";
 import "../containers/App.css";
 import { connect } from "react-redux";
-import { setSearchField } from "../actions";
+import { setSearchField, requestUsers } from "../actions";
 
 const mapStateToProps = state => {
   return {
-    searchField: state.searchUsers.searchField
+    searchField: state.searchUsers.searchField,
+    users: state.requestUsers.users,
+    isPending: state.requestUsers.isPending,
+    error: state.requestUsers.error
   };
 };
 
@@ -18,27 +21,20 @@ const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: event => {
       dispatch(setSearchField(event.target.value));
+    },
+    onRequestUsers: () => {
+      dispatch(requestUsers());
     }
   };
 };
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      users: []
-    };
-  }
-
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(response => response.json())
-      .then(users => this.setState({ users: users }));
+    this.props.onRequestUsers();
   }
 
   render() {
-    const { users } = this.state;
-    const { searchField, onSearchChange } = this.props;
+    const { searchField, onSearchChange, users } = this.props;
     const filteredUsers = users.filter(user => {
       return user.name.toLowerCase().includes(searchField.toLowerCase());
     });
