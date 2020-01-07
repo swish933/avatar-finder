@@ -6,7 +6,7 @@ export default class SearchBox extends Component {
       <div className="pa2 mb3">
         <input
           className="pa3 ba b--light-green bg-light-blue"
-          placeholder="Search Robot"
+          placeholder="Search Avatar"
           onChange={this.props.searchChange}
         />
       </div>

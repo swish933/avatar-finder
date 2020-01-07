@@ -2,15 +2,31 @@ import React, { Component } from "react";
 import Scroll from "../components/Scroll";
 import SearchBox from "../components/SearchBox";
 import CardArray from "../components/CardArray";
+import ErrorBoundary from "../components/ErrorBoundary";
 import "../index.css";
 import "../containers/App.css";
+import { connect } from "react-redux";
+import { setSearchField } from "../actions";
 
-export default class App extends Component {
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchUsers.searchField
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchChange: event => {
+      dispatch(setSearchField(event.target.value));
+    }
+  };
+};
+
+class App extends Component {
   constructor() {
     super();
     this.state = {
-      users: [],
-      searchField: ""
+      users: []
     };
   }
 
@@ -19,28 +35,28 @@ export default class App extends Component {
       .then(response => response.json())
       .then(users => this.setState({ users: users }));
   }
-  onSearchChange = event => {
-    this.setState({ searchField: event.target.value });
-  };
 
   render() {
-    const filteredUsers = this.state.users.filter(user => {
-      return user.name
-        .toLowerCase()
-        .includes(this.state.searchField.toLowerCase());
+    const { users } = this.state;
+    const { searchField, onSearchChange } = this.props;
+    const filteredUsers = users.filter(user => {
+      return user.name.toLowerCase().includes(searchField.toLowerCase());
     });
-    if (this.state.users.length === 0) {
-      return <h1 className="tc">Loading</h1>;
-    } else {
-      return (
-        <div className="tc">
-          <h1>RobotFinder</h1>
-          <SearchBox searchChange={this.onSearchChange} />
-          <Scroll>
+
+    return !users.length ? (
+      <h1 className="tc">Loading</h1>
+    ) : (
+      <div className="tc">
+        <h1>AvatarFinder</h1>
+        <SearchBox searchChange={onSearchChange} />
+        <Scroll>
+          <ErrorBoundary>
             <CardArray users={filteredUsers} />
-          </Scroll>
-        </div>
-      );
-    }
+          </ErrorBoundary>
+        </Scroll>
+      </div>
+    );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
