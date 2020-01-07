@@ -1,1 +1,1 @@
-A simple App to search robots by name
+A simple App to search avatars loaded using an API by name
