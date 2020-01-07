@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/avatar-finder/static/css/main.c936c3cd.chunk.css",
+    "main.js": "/avatar-finder/static/js/main.25e5dddd.chunk.js",
+    "main.js.map": "/avatar-finder/static/js/main.25e5dddd.chunk.js.map",
+    "runtime-main.js": "/avatar-finder/static/js/runtime-main.8e433fff.js",
+    "runtime-main.js.map": "/avatar-finder/static/js/runtime-main.8e433fff.js.map",
+    "static/css/2.eb45ad44.chunk.css": "/avatar-finder/static/css/2.eb45ad44.chunk.css",
+    "static/js/2.55a6a666.chunk.js": "/avatar-finder/static/js/2.55a6a666.chunk.js",
+    "static/js/2.55a6a666.chunk.js.map": "/avatar-finder/static/js/2.55a6a666.chunk.js.map",
+    "index.html": "/avatar-finder/index.html",
+    "precache-manifest.4028a6f0529bac69b8839064d5e34c21.js": "/avatar-finder/precache-manifest.4028a6f0529bac69b8839064d5e34c21.js",
+    "service-worker.js": "/avatar-finder/service-worker.js",
+    "static/css/2.eb45ad44.chunk.css.map": "/avatar-finder/static/css/2.eb45ad44.chunk.css.map",
+    "static/css/main.c936c3cd.chunk.css.map": "/avatar-finder/static/css/main.c936c3cd.chunk.css.map",
+    "static/media/App.css": "/avatar-finder/static/media/SEGA.12a3db8b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8e433fff.js",
+    "static/css/2.eb45ad44.chunk.css",
+    "static/js/2.55a6a666.chunk.js",
+    "static/css/main.c936c3cd.chunk.css",
+    "static/js/main.25e5dddd.chunk.js"
+  ]
+}
